@@ -2,12 +2,12 @@ package com.builtbroken.breadstone.init;
 
 import com.builtbroken.breadstone.BreadStoneMod;
 
-import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -24,7 +24,7 @@ public class BreadstoneArmorMaterial implements IArmorMaterial {
 	}
 
 	@Override
-	public int getDamageReductionAmount(EntityEquipmentSlot slot) {
+	public int getDamageReductionAmount(EquipmentSlotType slot) {
 		switch (slot) {
 		case CHEST:
 			return 5;
@@ -66,7 +66,7 @@ public class BreadstoneArmorMaterial implements IArmorMaterial {
 	}
 
 	@Override
-	public int getDurability(EntityEquipmentSlot slotIn) {
+	public int getDurability(EquipmentSlotType slotIn) {
 		return 15;
 	}
 

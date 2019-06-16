@@ -1,12 +1,8 @@
 package com.builtbroken.breadstone.init;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.builtbroken.breadstone.BreadStoneMod;
 import com.builtbroken.breadstone.common.item.*;
-
-import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.Properties;
 import net.minecraftforge.event.RegistryEvent;
@@ -27,10 +23,10 @@ public class ItemRegistry {
 	public static ItemStaleBreadHoe stalebreadhoe = new ItemStaleBreadHoe();
 
 	// Armor
-	public static ItemStaleBreadArmor stalebreadhelmet = new ItemStaleBreadArmor(EntityEquipmentSlot.HEAD, "helmet");
-	public static ItemStaleBreadArmor stalebreadchestplate = new ItemStaleBreadArmor(EntityEquipmentSlot.CHEST, "chestplate");
-	public static ItemStaleBreadArmor stalebreadleggings = new ItemStaleBreadArmor(EntityEquipmentSlot.LEGS, "leggings");
-	public static ItemStaleBreadArmor stalebreadboots = new ItemStaleBreadArmor(EntityEquipmentSlot.FEET, "boots");
+	public static ItemStaleBreadArmor stalebreadhelmet = new ItemStaleBreadArmor(EquipmentSlotType.HEAD, "helmet");
+	public static ItemStaleBreadArmor stalebreadchestplate = new ItemStaleBreadArmor(EquipmentSlotType.CHEST, "chestplate");
+	public static ItemStaleBreadArmor stalebreadleggings = new ItemStaleBreadArmor(EquipmentSlotType.LEGS, "leggings");
+	public static ItemStaleBreadArmor stalebreadboots = new ItemStaleBreadArmor(EquipmentSlotType.FEET, "boots");
 
 	//Misc
 	public static ItemStaleBreadArrow stalebreadarrow = new ItemStaleBreadArrow();
@@ -46,7 +42,6 @@ public class ItemRegistry {
 
 	@Mod.EventBusSubscriber(modid = BreadStoneMod.MOD_ID, bus = Bus.MOD)
 	public static class RegistrationHandler {
-		public static final Set<Item> ITEMS = new HashSet<>();
 
 		/**
 		 * Register this mod's {@link Item}s.
@@ -62,7 +57,6 @@ public class ItemRegistry {
 
 			for (final Item item : items) {
 				registry.register(item);
-				ITEMS.add(item);
 			}
 		}
 	}

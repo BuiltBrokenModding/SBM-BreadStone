@@ -2,10 +2,9 @@ package com.builtbroken.breadstone;
 
 import com.builtbroken.breadstone.client.renderer.entity.RenderStaleBreadArrow;
 import com.builtbroken.breadstone.common.entity.EntityBreadArrow;
-
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -37,7 +36,6 @@ public class BreadStoneMod {
 	}
 
 	public void onModelRegistry(ModelRegistryEvent event) {
-		RenderingRegistry.registerEntityRenderingHandler(EntityBreadArrow.class, manager -> new RenderStaleBreadArrow(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBreadArrow.class, RenderStaleBreadArrow::new);
 	}
-
 }

@@ -2,28 +2,28 @@ package com.builtbroken.breadstone.client.renderer.entity;
 
 import com.builtbroken.breadstone.BreadStoneMod;
 import com.builtbroken.breadstone.common.entity.EntityBreadArrow;
-
-import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
+import com.mojang.blaze3d.platform.GlStateManager;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.ArrowRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.Nullable;
+
 @OnlyIn(Dist.CLIENT)
-public class RenderStaleBreadArrow extends Render<EntityBreadArrow> {
-	public RenderStaleBreadArrow(RenderManager renderManagerIn) {
+public class RenderStaleBreadArrow extends ArrowRenderer<EntityBreadArrow> {
+	public RenderStaleBreadArrow(EntityRendererManager renderManagerIn) {
 		super(renderManagerIn);
 	}
 
+
 	public static final ResourceLocation ARROW_TEXTURE = new ResourceLocation(BreadStoneMod.MOD_ID, "textures/entities/stalebreadarrow.png");
 
-	@Override
-	protected ResourceLocation getEntityTexture(EntityBreadArrow entity) {
-		return ARROW_TEXTURE;
-	}
 
 	/**
 	 * Renders the desired {@code T} type Entity.
@@ -63,7 +63,7 @@ public class RenderStaleBreadArrow extends Render<EntityBreadArrow> {
 
 		if (renderOutlines) {
 			GlStateManager.enableColorMaterial();
-			GlStateManager.enableOutlineMode(getTeamColor(entity));
+			//	GlStateManager.enableOutlineMode(getTeamColor(entity));
 		}
 
 		GlStateManager.normal3f(0.05625F, 0.0F, 0.0F);
@@ -93,7 +93,7 @@ public class RenderStaleBreadArrow extends Render<EntityBreadArrow> {
 		}
 
 		if (renderOutlines) {
-			GlStateManager.disableOutlineMode();
+			//	GlStateManager.disableOutlineMode();
 			GlStateManager.disableColorMaterial();
 		}
 
@@ -101,5 +101,16 @@ public class RenderStaleBreadArrow extends Render<EntityBreadArrow> {
 		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
+	}
+
+	/**
+	 * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
+	 *
+	 * @param entity
+	 */
+	@Nullable
+	@Override
+	protected ResourceLocation getEntityTexture(EntityBreadArrow entity) {
+		return ARROW_TEXTURE;
 	}
 }
