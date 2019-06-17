@@ -20,5 +20,4 @@ public class ItemStaleBreadArrow extends ArrowItem {
 	public AbstractArrowEntity createArrow(World worldIn, ItemStack stack, LivingEntity shooter) {
 		return new EntityBreadArrow(worldIn, shooter);
 	}
-
 }

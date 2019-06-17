@@ -2,36 +2,32 @@ package com.builtbroken.breadstone.common.entity;
 
 import com.builtbroken.breadstone.init.EntityRegistry;
 import com.builtbroken.breadstone.init.ItemRegistry;
-
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.IPacket;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
 
-public class EntityBreadArrow extends AbstractArrowEntity {
+public class EntityBreadArrow extends AbstractArrowEntity
+{
+    public EntityBreadArrow(World p_i50172_2_)
+    {
+        super(EntityRegistry.STALEBREAD_ARROW, p_i50172_2_);
+    }
 
-	public EntityBreadArrow(World worldIn) {
-		super(EntityRegistry.STALEBREAD_ARROW, worldIn);
-	}
+    public EntityBreadArrow(World p_i46757_1_, double p_i46757_2_, double p_i46757_4_, double p_i46757_6_)
+    {
+        super(EntityRegistry.STALEBREAD_ARROW, p_i46757_2_, p_i46757_4_, p_i46757_6_, p_i46757_1_);
+    }
 
-	public EntityBreadArrow(World world, LivingEntity shooter) {
-		super(EntityRegistry.STALEBREAD_ARROW, shooter, world);
-	}
+    public EntityBreadArrow(World p_i46758_1_, LivingEntity p_i46758_2_)
+    {
+        super(EntityRegistry.STALEBREAD_ARROW, p_i46758_2_, p_i46758_1_);
+    }
 
-	public EntityBreadArrow(World world, double x, double y, double z) {
-		super(EntityRegistry.STALEBREAD_ARROW, x, y, z, world);
-	}
-
-	@Override
-	protected ItemStack getArrowStack() {
-		return new ItemStack(ItemRegistry.stalebreadarrow, 1);
-	}
-
-	@Override
-	public IPacket<?> createSpawnPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
-	}
+    @Override
+    protected ItemStack getArrowStack()
+    {
+        return new ItemStack(ItemRegistry.stalebreadarrow);
+    }
 }
 
